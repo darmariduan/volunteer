@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jul 04, 2020 at 06:49 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.0.33
+-- Host: 127.0.0.1
+-- Generation Time: Mar 22, 2021 at 04:32 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.3.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `volunter`
+-- Database: `volunteer`
 --
 
 -- --------------------------------------------------------
@@ -28,12 +27,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `agama`
 --
 
-DROP TABLE IF EXISTS `agama`;
-CREATE TABLE IF NOT EXISTS `agama` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `keterangan` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+CREATE TABLE `agama` (
+  `id` int(11) NOT NULL,
+  `keterangan` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `agama`
@@ -52,8 +49,7 @@ INSERT INTO `agama` (`id`, `keterangan`) VALUES
 -- Table structure for table `aktivitas`
 --
 
-DROP TABLE IF EXISTS `aktivitas`;
-CREATE TABLE IF NOT EXISTS `aktivitas` (
+CREATE TABLE `aktivitas` (
   `id_aktivitas` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
@@ -66,21 +62,20 @@ CREATE TABLE IF NOT EXISTS `aktivitas` (
 -- Table structure for table `announcement`
 --
 
-DROP TABLE IF EXISTS `announcement`;
-CREATE TABLE IF NOT EXISTS `announcement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `announcement` (
+  `id` int(11) NOT NULL,
   `keterangan` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `announcement`
 --
 
 INSERT INTO `announcement` (`id`, `keterangan`, `created_at`) VALUES
-(16, '<p>heading 1</p>\r\n<p>heading 2&nbsp;&nbsp;</p>', '2020-07-04 13:46:26'),
-(17, '<p>Lorem ipsum bala bala bala</p>\r\n<p>ini teks aj 1</p>', '2020-07-04 13:46:47');
+(24, '<p>jangan lupa gunakan masker.</p>', '2020-07-07 13:04:00'),
+(25, '<p>hiii selamat datang di rc</p>', '2020-07-10 13:58:05'),
+(26, '<p>agenda 1&nbsp;</p>', '2020-07-20 11:41:54');
 
 -- --------------------------------------------------------
 
@@ -88,16 +83,14 @@ INSERT INTO `announcement` (`id`, `keterangan`, `created_at`) VALUES
 -- Table structure for table `files`
 --
 
-DROP TABLE IF EXISTS `files`;
-CREATE TABLE IF NOT EXISTS `files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `upload_name` varchar(255) NOT NULL,
   `uploaded_by` int(2) NOT NULL,
   `uploaded_to` int(2) DEFAULT NULL,
-  `uploaded_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `uploaded_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `files`
@@ -105,7 +98,15 @@ CREATE TABLE IF NOT EXISTS `files` (
 
 INSERT INTO `files` (`id`, `file_name`, `upload_name`, `uploaded_by`, `uploaded_to`, `uploaded_at`) VALUES
 (8, 'Sertifikat kematian', 'Sertifikat_kematian-2020-07-04.pdf', 1, 2, '2020-07-04 13:20:22'),
-(9, 'Sertifikat idup', 'Sertifikat_idup-2020-07-04.pdf', 1, 2, '2020-07-04 13:21:18');
+(9, 'Sertifikat idup', 'Sertifikat_idup-2020-07-04.pdf', 1, 2, '2020-07-04 13:21:18'),
+(10, 'SERTIFIKAT  TALK SHOW', 'SERTIFIKAT_TALK_SHOW-2020-07-07.pdf', 1, 23, '2020-07-07 13:08:18'),
+(11, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-07-10.pdf', 1, 26, '2020-07-10 14:48:26'),
+(12, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-07-11.pdf', 1, 27, '2020-07-11 15:24:22'),
+(13, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-07-20.pdf', 1, 31, '2020-07-20 11:47:17'),
+(14, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-07-27.pdf', 1, 32, '2020-07-27 11:23:31'),
+(15, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-07-271.pdf', 1, 30, '2020-07-27 11:26:16'),
+(16, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-08-05.pdf', 1, 33, '2020-08-05 11:54:22'),
+(17, 'SERTIFIKAT ', 'SERTIFIKAT_-2020-08-13.pdf', 1, 35, '2020-08-13 15:38:17');
 
 -- --------------------------------------------------------
 
@@ -113,21 +114,20 @@ INSERT INTO `files` (`id`, `file_name`, `upload_name`, `uploaded_by`, `uploaded_
 -- Table structure for table `imgdashboard`
 --
 
-DROP TABLE IF EXISTS `imgdashboard`;
-CREATE TABLE IF NOT EXISTS `imgdashboard` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+CREATE TABLE `imgdashboard` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `imgdashboard`
 --
 
 INSERT INTO `imgdashboard` (`id`, `image`) VALUES
-(1, 'dashboard-2020-04-14.jpg'),
-(2, 'dashboard-2020-04-14.png'),
-(10, 'dashboard-2020-05-21.jpg');
+(11, 'dashboard-2020-07-04.jpg'),
+(13, 'dashboard-2020-07-042.jpg'),
+(14, 'dashboard-2020-07-043.jpg'),
+(15, 'dashboard-2020-07-07.jpg');
 
 -- --------------------------------------------------------
 
@@ -135,9 +135,8 @@ INSERT INTO `imgdashboard` (`id`, `image`) VALUES
 -- Table structure for table `lain_lain`
 --
 
-DROP TABLE IF EXISTS `lain_lain`;
-CREATE TABLE IF NOT EXISTS `lain_lain` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lain_lain` (
+  `id` int(11) NOT NULL,
   `image_welcome` varchar(255) NOT NULL,
   `selamat_datang` varchar(255) NOT NULL,
   `heading` varchar(255) NOT NULL,
@@ -155,16 +154,15 @@ CREATE TABLE IF NOT EXISTS `lain_lain` (
   `link_3` varchar(255) NOT NULL,
   `jurusan_4` varchar(255) NOT NULL,
   `text_4` text NOT NULL,
-  `link_4` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `link_4` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lain_lain`
 --
 
 INSERT INTO `lain_lain` (`id`, `image_welcome`, `selamat_datang`, `heading`, `text_heading`, `image`, `url_link`, `jurusan_1`, `text_1`, `link_1`, `jurusan_2`, `text_2`, `link_2`, `jurusan_3`, `text_3`, `link_3`, `jurusan_4`, `text_4`, `link_4`) VALUES
-(1, 'welcome-2020-03-301.png', 'Komunitas adalah tiket ke masa depan. Hari esok dimiliki oleh orang-orang yang mempersiapkan diri sejak hari ini. Test', 'Fokus menghadirkan layanan komunitas yang bermutu', 'Kami membekali anggota komunitas agar siap menghadapi tantangan kompetisi global. Pengembangan kompetensi anggota komunitas untuk sumber daya manusia Indonesia berkualitas dalam persaingan dunia.', 'lain-2020-03-301.jpg', 'https://www.youtube.com/watch?v=5yunYzAhlX4', 'JRS', 'Anggota diarahkan berjiwa wirausaha dan ahli bisnis serta menjadi tenaga kerja tingkat menengah untuk mengisi kebutuhan dunia usaha/industri', '#', 'OTKP', 'Lulusan diarahkan siap memasuki dunia usaha/industri yang profesional dibidang administrasi, organisasi, manajemen, menjadi pribadi mandiri dan berjiwa wirausaha', '', 'RPL', 'Lulusan dibekali pengetahuan dan keterampilan dibidang komputer dan aplikasi, berjiwa wirausaha, mandiri, serta mampu bersaing di dunia usaha/industri.', '', 'MULTIMEDIA', 'Lulusan dibekali pengetahuan dan keterampilan dibidang komputer dan aplikasi, berjiwa wirausaha, mandiri, serta mampu bersaing di dunia usaha/industri. dhaskfhjkhf kdhf kjdshgjk hskgh.', 'https://www.google.com\r\n');
+(1, 'welcome-2020-03-301.png', 'Rumah Cerdas Anak Perempuan merupakan non government organization yang bergerak memberdayakan kaum muda untuk siap berkontribusi dalam upaya pencapaian tujuan pembangunan berkelanjutan atau dikenal sebagai Sustainable Development Goals (SDGs)yang bergerak', 'Quality education yaitu memastikan pendidikan yang inklusif dan berkualitas setara, juga mendukung kesempatan belajar seumur hidup bagi semua. Gender equality yaitu mencapai kesetaraan gender dan memberdayakan semua perempuan dan anak perempuan. ', 'Kami memiliki anggota yang siap berkontribusi untuk daerah.', 'lain-2020-03-301.jpg', 'https://www.youtube.com/watch?v=cTYa8KIG5bc', 'JRS', 'Anggota memiliki jiwa kesukarelaan dalam meluangkan waktu ', '#', 'OTKP', 'Lulusan diarahkan siap memasuki dunia usaha/industri yang profesional dibidang administrasi, organisasi, manajemen, menjadi pribadi mandiri dan berjiwa wirausaha', 'rc', 'rc', 'rc', 'rc', 'MULTIMEDIA', 'Lulusan dibekali pengetahuan dan keterampilan dibidang komputer dan aplikasi, berjiwa wirausaha, mandiri, serta mampu bersaing di dunia usaha/industri. dhaskfhjkhf kdhf kjdshgjk hskgh.', 'https://www.google.com\r\n');
 
 -- --------------------------------------------------------
 
@@ -172,20 +170,11 @@ INSERT INTO `lain_lain` (`id`, `image_welcome`, `selamat_datang`, `heading`, `te
 -- Table structure for table `menu`
 --
 
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE IF NOT EXISTS `menu` (
-  `id_menu` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `menu` (
+  `id_menu` tinyint(3) UNSIGNED NOT NULL,
   `menu` varchar(200) NOT NULL DEFAULT '',
-  `isi_menu` text NOT NULL,
-  PRIMARY KEY (`id_menu`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`id_menu`, `menu`, `isi_menu`) VALUES
-(4, 'Hubungi Kami', 'test isi hubungi kami');
+  `isi_menu` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -193,15 +182,13 @@ INSERT INTO `menu` (`id_menu`, `menu`, `isi_menu`) VALUES
 -- Table structure for table `message`
 --
 
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE IF NOT EXISTS `message` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
   `content` varchar(256) DEFAULT NULL,
   `from_users` int(2) DEFAULT NULL,
   `to_admin` int(2) NOT NULL DEFAULT 1,
-  `date` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
@@ -229,7 +216,23 @@ INSERT INTO `message` (`id`, `content`, `from_users`, `to_admin`, `date`) VALUES
 (33, 'testing woi', 1, 21, '2020-07-04 10:21:32'),
 (34, 'apa woi', 21, 1, '2020-07-04 10:22:24'),
 (35, '<p><p><br></p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/Cara-Membuat-Account-Paypal.jpg\" style=\"width: 463px; height: 248.284px;\"><p><br></p></p><p>Hallo ini kgiatan kami</p>', 21, 1, '2020-07-04 10:42:27'),
-(36, '<p><p><br></p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/350x230-img-96220-logo-go-pay.jpg\" style=\"width: 439px; height: 288.642px;\"><p><br></p></p><p>Hallo</p>', 21, 1, '2020-07-04 13:13:49');
+(36, '<p><p><br></p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/350x230-img-96220-logo-go-pay.jpg\" style=\"width: 439px; height: 288.642px;\"><p><br></p></p><p>Hallo</p>', 21, 1, '2020-07-04 13:13:49'),
+(37, 'saya dari tadi', 23, 1, '2020-07-04 21:07:24'),
+(38, '<p>kegiatan hari ini bersama FAKA (FORUM ANAK KAB. ASAHAN)</p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/IMG-20190721-WA0017.jpg\" style=\"width: 390.795px; height: 293.096px;\"><p><br></p>', 23, 1, '2020-07-04 21:09:59'),
+(39, 'Saya Felix', 27, 1, '2020-07-11 16:27:27'),
+(40, '<p>Saya Felix</p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/IMG-20190724-WA0000.jpg\" style=\"width: 801px;\"><p><br></p>', 27, 1, '2020-07-11 16:30:08'),
+(41, 'hii', 31, 1, '2020-07-20 11:33:40'),
+(42, 'hiiii', 1, 1, '2020-07-20 11:40:48'),
+(43, 'Hi 123', 1, 1, '2020-07-23 20:42:06'),
+(44, 'hhhhhhh', 1, 31, '2020-07-23 20:43:12'),
+(45, 'Saya Zuhra\r\nPengajar Di RC 1', 30, 1, '2020-07-23 20:47:38'),
+(46, 'hiiii saya fitra', 32, 1, '2020-07-23 21:04:34'),
+(47, 'hii', 33, 1, '2020-08-05 11:51:01'),
+(48, 'Saya Hamidah', 34, 1, '2020-08-12 22:28:39'),
+(49, 'Hi saya Kiki', 35, 1, '2020-08-13 07:54:11'),
+(50, '<p>hii saya kiki</p><p><br></p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/IMG-20190716-WA0005.jpg\" style=\"width: 800px;\"><p><br></p>', 35, 1, '2020-08-13 15:37:23'),
+(51, 'fdf', 37, 1, '2020-08-21 17:40:33'),
+(52, NULL, 38, 1, '2020-08-21 17:55:19');
 
 -- --------------------------------------------------------
 
@@ -237,9 +240,8 @@ INSERT INTO `message` (`id`, `content`, `from_users`, `to_admin`, `date`) VALUES
 -- Table structure for table `profile`
 --
 
-DROP TABLE IF EXISTS `profile`;
-CREATE TABLE IF NOT EXISTS `profile` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `profile` (
+  `id` int(11) NOT NULL,
   `nama_komunitas` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `logo` varchar(50) NOT NULL,
@@ -261,16 +263,15 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `visi` text NOT NULL,
   `misi` text NOT NULL,
   `kenapa_kami` text NOT NULL,
-  `motto` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `motto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `profile`
 --
 
 INSERT INTO `profile` (`id`, `nama_komunitas`, `deskripsi`, `logo`, `akreditasi`, `nomor_ijin`, `tgl_berdiri`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `telp`, `fax`, `whatsapp_utama`, `whatsapp_kedua`, `email`, `status_komunitas`, `yayasan`, `visi`, `misi`, `kenapa_kami`, `motto`) VALUES
-(1, 'Maju Makmur', '&lt;p&gt;Komunitas pecinta komunitas yang paling keren dan oke didirkan oleh: Prof. Dr. Pendiri, M.A. Yang tergerak hatinya melihat begitu pesatnya perkembangan dunia teknologi informasi di segala bidang. .&lt;/p&gt; qw', 'logo-komunitas.png', 'Akreditasi A dan ISO 9001:2008', '421.3/3399/KOM', '2006-11-10', 'Jl. Dimana No. Berapa Kabupaten Ga Tau Provinsi Terserah qw', '1376011008', '1376011', '1376', '13', '021-212121', '021-212121', '08121212', '08121212', 'admin@komindo.org', 'Swasta', 'Yayasan Komunitas Indonesia', '&lt;p&gt;Komunitas Maju Makmur yang terus menerus menyelaraskan program komunitasnya dengan dunia usaha dan dunia industri serta lingkungan pendukung lainnya sehingga menghasilkan komunitas yang kompeten serta berwawasan global&lt;/p&gt; qweqw', '&lt;p style=&quot;text-align: left;&quot;&gt;Mendidik, melatih, dan membimbing siswa untuk menjadi seseorang yang kompeten dalam bidang Teknologi Informasi serta bertakwa kepada Tuhan Yang Maha Esa Mengembangkan dan meningkatkan kerjasama dengan seluruh pihak yang terkait dengan berlandaskan kepada saling memberi manfaat Menciptakan lingkungan komunitas yang kondusif dan menyenangkan demi keberhasilan proses belajar mengajar&lt;/p&gt; qw', '<p>Komunitas ini mendorong peserta didik untuk aktif dalam berbagai kegiatan , karena sukses di masa mendatang tidak hanya ditentukan oleh hardskill tetapi juga oleh soft skill mereka.</p>', 'Moto aja test 111');
+(1, 'Rumah Cerdas Anak Perempuan', 'Rumah Cerdas Anak Perempuan merupakan non government organization yang bergerak memberdayakan kaum muda untuk siap berkontribusi dalam upaya pencapaian tujuan pembangunan berkelanjutan atau dikenal sebagai Sustainable Development Goals (SDGs)', 'logo-komunitas.png', 'Akreditasi A dan ISO 9001:2008', '421.3/3399/KOM', '2006-11-10', 'Jl. Danau Sijabut, Margodadi Kec. Aair Batu Kab. Asahan', '1376011008', '1376011', '1376', '13', '021-212121', '021-212121', '08126052185', '082288607518', 'rumahcaper@gmail.com', 'Swasta', 'Yayasan Komunitas Indonesia', 'Terwujudnya kaum muda yang peduli penggerak perubahan dalam upaya pencapaian tujuan pembangunan berkelanjutan.', '1.	Menciptakan agen perubahan yang bergerak dalam pencapaian SDGs tujuan empat dan lima (pendidikan berkualitas dan gender equality).\r\n2.	Mendorong kaum muda untuk peduli terhadap permasalahan yang ada dilingkungan sekitar.\r\n3.	Memberi wadah untuk anak perempuan dan perempuan muda untuk belajar dan mengembangkan kemampuannya dalam rangka pemenuhan hak anak perempuan dan pencegahan perkawinan usia anak.\r\n', '<p>Komunitas ini mendorong peserta didik untuk aktif dalam berbagai kegiatan , karena sukses di masa mendatang tidak hanya ditentukan oleh hardskill tetapi juga oleh soft skill mereka.</p>', 'Mari berkontribusi untuk daerah ');
 
 -- --------------------------------------------------------
 
@@ -278,12 +279,10 @@ INSERT INTO `profile` (`id`, `nama_komunitas`, `deskripsi`, `logo`, `akreditasi`
 -- Table structure for table `program`
 --
 
-DROP TABLE IF EXISTS `program`;
-CREATE TABLE IF NOT EXISTS `program` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `keterangan` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+CREATE TABLE `program` (
+  `id` int(11) NOT NULL,
+  `keterangan` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `program`
@@ -300,12 +299,10 @@ INSERT INTO `program` (`id`, `keterangan`) VALUES
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
-CREATE TABLE IF NOT EXISTS `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `keterangan` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `keterangan` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `role`
@@ -322,27 +319,23 @@ INSERT INTO `role` (`id`, `keterangan`) VALUES
 -- Table structure for table `tbl_berita`
 --
 
-DROP TABLE IF EXISTS `tbl_berita`;
-CREATE TABLE IF NOT EXISTS `tbl_berita` (
-  `id_berita` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_berita` (
+  `id_berita` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `deskripsi` longtext NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id_berita`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_berita`
 --
 
 INSERT INTO `tbl_berita` (`id_berita`, `judul`, `image`, `deskripsi`, `created_at`) VALUES
-(1, 'Test Bener', '', 'qwe', '2020-05-23 10:01:27'),
-(2, 'qewqeq', '', 'qweqe', '2020-05-23 10:05:12'),
-(3, 'qweqewq', '', 'qweqweq', '2020-05-23 10:05:17'),
-(4, 'qweqw', '', '<p>qweqw</p><p>qweqqwe</p><p><br></p><img src=\"http://localhost/frontend/assets/images/summernote/smile5.jpg\" style=\"width: 520px;\"><p><br></p>', '2020-05-23 10:05:44'),
-(5, '&#039;=&quot;or&#039;', '', '', '2020-06-03 08:07:18'),
-(6, 'test 123', '', '<p><br></p><img src=\"http://localhost/contohweb/volunter/frontend/assets/images/summernote/seascape.jpg\" style=\"width: 520px;\"><p><br></p>', '2020-07-03 23:46:48');
+(7, 'Mahasiswa Turun Tangan', '', '<p>MARI BERKONTRIBUSI SELAMA MASA PANDEMI</p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/IMG-20200619-WA00362.jpg\" style=\"width: 84.5752px; height: 120.868px;\"><p><br></p>', '2020-07-04 14:21:22'),
+(8, 'stop perkawinan usia anak', '', '<p>Rumah CaPer X FAKA (FORUM ANAK KABUPATEN ASAHAN) sosialisasi \"stop perkawinan usia anak\" di Alun-alun Kisaran</p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/IMG-20190722-WA0041.jpg\" style=\"width: 351.087px; height: 262.979px;\"><p><br></p>', '2020-07-04 14:24:00'),
+(9, 'Stop Bullying', '', '<p>Sosialisasi Stop Bullying pada SDN Hesa Perlompongan</p><img src=\"http://localhost/volunter/frontend/assets/images/summernote/IMG-20190829-WA0028.jpg\" style=\"width: 383.128px; height: 286.979px;\"><p><br></p>', '2020-07-04 14:27:39'),
+(10, 'Sosialisasi Kesehatan Reproduksi', '', '<p><br></p><img src=\"http://localhost/volunteer/frontend/assets/images/summernote/announce-advertisement-poster-background-vector-20585135.jpg\" style=\"width: 292.889px; height: 245.196px;\"><p><br></p><p>Sosialisasi Kesehatan Reproduksi</p>', '2021-03-22 22:31:59');
 
 -- --------------------------------------------------------
 
@@ -350,9 +343,8 @@ INSERT INTO `tbl_berita` (`id_berita`, `judul`, `image`, `deskripsi`, `created_a
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `nama_admin` varchar(50) DEFAULT NULL,
   `alamat` varchar(256) DEFAULT NULL,
   `agama` int(2) NOT NULL,
@@ -364,19 +356,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(64) DEFAULT NULL,
   `password` varchar(64) NOT NULL,
   `foto` varchar(100) NOT NULL DEFAULT 'default.jpg',
-  `level` varchar(2) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+  `level` varchar(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nama_admin`, `alamat`, `agama`, `tempat`, `organisasi`, `email`, `nohp`, `program`, `username`, `password`, `foto`, `level`) VALUES
-(1, 'Administrator', 'Jl. Test Nomor 12', 0, 'Medan', '-----', 'admin@admin.com', '081285151512', '', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin-2020-03-15.png', '1'),
-(2, 'Sasangko Mono Daspari', 'Jl bersama dimana saja', 2, 'Medan', 'qweq', 'erwan.asda12@sadas.com', '928282828', '3', 'user', '21232f297a57a5a743894a0e4a801fc3', 'default.jpg', '2'),
-(21, 'Riduan', 'Medan Area', 3, 'Medan', 'PWI', 'dharmarhiduwhan@gmail.com', '082167874402', '2', 'darmariduan', '755327874759ccd322b004acfe0e6f3d', 'users-2020-07-04.jpg', '2'),
-(22, 'Nama Siswa', 'Danau Sijabut', 0, 'Sei Alim Hasak', 'BEM STMIK', 'yenielizha03@gmail.com', '0812605285', '1', 'yeni1234', 'bdb75c4c3de06fc1b78c133d4c730e2f', 'users-2020-07-041.jpg', '3');
+(1, 'Administrator', 'Danau Sijabut', 0, 'Medan', '-', 'admin@admin.com', '081285151512', '', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin-2020-03-15.png', '1'),
+(27, 'M. Felix W', 'Air Genting', 1, 'Air Genting, 08 Juni 1999', 'OSIS SMA Muhammadiyah 8 Kisaran', 'felix08@gmail.com', '082377689063', '2', 'felix', '25779f8829ab7a7650e85a4cc871e6ac', 'users-2020-07-11.png', '3'),
+(28, 'Ahmad Maulana', 'Danau Sijabut Dusun V', 1, 'Danau Sijabut, 05 Mei 1999', 'Pridanas', 'ahmadmaulana@gmail.com', '085356457639', '3', 'ahmadmaulana', '27211241723931b88e23ae0d1698c37e', 'users-2020-07-111.png', '3'),
+(29, 'Aufa Zuhdi', 'Tanjung Balai', 1, 'Tanjung Balai, 22 April 1998', 'UNA (Universitas Asahan', 'aufazuhdi@gmail.com', '082312976643', '3', 'aufazuhdi', 'a304afef3a6d056b1bdb87662ea26845', 'users-2020-07-112.png', '3'),
+(30, 'Zuhra Nahda', 'Danau Sijabut Dusun VII', 1, 'Danau Sijabut, 04 November 2000', 'UIN Medan', 'zuhranahda@gmail.com', '085214456530', '1', 'zuhranahda', 'e3b73feb6d648165b70e0e7c1fa5d32c', 'users-2020-07-113.png', '3'),
+(32, 'Fitra Sugiarto', 'Danau Sijabut', 1, 'Danau Sijabut, 27 Februari 2002', 'FAKA', 'fitrasugiarto@gmail.com', '085334599087', '1', 'fitra', '39ac928668d25ccb478c0a0ea0ac7a4c', 'users-2020-07-23.png', '3'),
+(35, 'Kiki Umairah', 'Danau Sijabut', 1, 'Danau Sijabut, 10 Oktober 1998', 'FAKA', 'kiki@gmail.com', '087818881749', '1', 'kiki12345', '173e017988c797244d9d36dd804a0701', 'users-2020-08-13.jpg', '3'),
+(37, 'dani ramadhan', 'Danau Sijabut', 1, 'Sei Alim Hasak 10 okt 1998', 'FAKA', 'dani@gmail.com', '098766544322', '1', 'dani123', 'fcea920f7412b5da7be0cf42b8c93759', 'users-2020-08-21.jpg', '3'),
+(38, 'Bunga Safitri', 'Margodadi', 1, 'Margodadi, 12 agust 2002', 'FAKA', 'bunga@gmail.com', '09567654325', '2', 'bunga123', '508041e449f36b7f47448e4b3bbd74d7', 'users-2020-08-211.jpg', '3');
 
 -- --------------------------------------------------------
 
@@ -384,8 +380,7 @@ INSERT INTO `users` (`id`, `nama_admin`, `alamat`, `agama`, `tempat`, `organisas
 -- Table structure for table `wilayah_desa`
 --
 
-DROP TABLE IF EXISTS `wilayah_desa`;
-CREATE TABLE IF NOT EXISTS `wilayah_desa` (
+CREATE TABLE `wilayah_desa` (
   `id` varchar(10) NOT NULL,
   `kecamatan_id` varchar(7) DEFAULT NULL,
   `nama` varchar(40) DEFAULT NULL
@@ -80166,8 +80161,7 @@ INSERT INTO `wilayah_desa` (`id`, `kecamatan_id`, `nama`) VALUES
 -- Table structure for table `wilayah_kabupaten`
 --
 
-DROP TABLE IF EXISTS `wilayah_kabupaten`;
-CREATE TABLE IF NOT EXISTS `wilayah_kabupaten` (
+CREATE TABLE `wilayah_kabupaten` (
   `id` varchar(4) NOT NULL,
   `provinsi_id` varchar(2) NOT NULL DEFAULT '',
   `nama` varchar(30) NOT NULL
@@ -80684,8 +80678,7 @@ INSERT INTO `wilayah_kabupaten` (`id`, `provinsi_id`, `nama`) VALUES
 -- Table structure for table `wilayah_kecamatan`
 --
 
-DROP TABLE IF EXISTS `wilayah_kecamatan`;
-CREATE TABLE IF NOT EXISTS `wilayah_kecamatan` (
+CREATE TABLE `wilayah_kecamatan` (
   `id` varchar(7) NOT NULL,
   `kabupaten_id` varchar(4) NOT NULL DEFAULT '',
   `nama` varchar(30) NOT NULL
@@ -87585,8 +87578,7 @@ INSERT INTO `wilayah_kecamatan` (`id`, `kabupaten_id`, `nama`) VALUES
 -- Table structure for table `wilayah_provinsi`
 --
 
-DROP TABLE IF EXISTS `wilayah_provinsi`;
-CREATE TABLE IF NOT EXISTS `wilayah_provinsi` (
+CREATE TABLE `wilayah_provinsi` (
   `id` varchar(2) NOT NULL,
   `nama` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -87630,6 +87622,158 @@ INSERT INTO `wilayah_provinsi` (`id`, `nama`) VALUES
 ('82', 'Maluku Utara'),
 ('91', 'Papua Barat'),
 ('94', 'Papua');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `agama`
+--
+ALTER TABLE `agama`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `imgdashboard`
+--
+ALTER TABLE `imgdashboard`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lain_lain`
+--
+ALTER TABLE `lain_lain`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `program`
+--
+ALTER TABLE `program`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_berita`
+--
+ALTER TABLE `tbl_berita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `agama`
+--
+ALTER TABLE `agama`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `imgdashboard`
+--
+ALTER TABLE `imgdashboard`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `lain_lain`
+--
+ALTER TABLE `lain_lain`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `profile`
+--
+ALTER TABLE `profile`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `program`
+--
+ALTER TABLE `program`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_berita`
+--
+ALTER TABLE `tbl_berita`
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
