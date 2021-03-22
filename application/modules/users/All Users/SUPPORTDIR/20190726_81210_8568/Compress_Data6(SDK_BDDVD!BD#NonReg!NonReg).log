@@ -1,0 +1,65 @@
+
+7-Zip 9.25 alpha  Copyright (c) 1999-2011 Igor Pavlov  2011-09-16
+Scanning
+
+Creating archive D:\SRBuild\160401\DVD160215-01\PowerDVD_DVD00046\Template\CD_TEMP\Data6.7z
+
+Compressing  NavFilter\lib\security\cacerts
+Compressing  NavFilter\lib\zi\Asia\Calcutta
+Compressing  NavFilter\lib\zi\GMT
+Compressing  NavFilter\lib\zi\America\Los_Angeles
+Compressing  NavFilter\lib\zi\Asia\Novosibirsk
+Compressing  NavFilter\lib\zi\ZoneInfoMappings
+Compressing  NavFilter\btclasses.zip
+Compressing  NavFilter\lib\basis.jar
+Compressing  NavFilter\BDJ.jar
+Compressing  NavFilter\BDJP1.jar
+Compressing  NavFilter\lib\charsets.jar
+Compressing  NavFilter\lib\jaas.jar
+Compressing  NavFilter\lib\jce.jar
+Compressing  NavFilter\lib\jsse-cdc.jar
+Compressing  NavFilter\lib\localedata.jar
+Compressing  NavFilter\lib\security\local_policy.jar
+Compressing  NavFilter\lib\ext\sunjce_provider.jar
+Compressing  NavFilter\lib\sunrsasign.jar
+Compressing  NavFilter\lib\security\US_export_policy.jar
+Compressing  NavFilter\xercesImpl.jar
+Compressing  NavFilter\xml-apis.jar
+Compressing  NavFilter\lib\image\logo.gif
+Compressing  InstantX.ini
+Compressing  AudioFilter\CLADT.ax
+Compressing  AudioFilter\CLAud_1.ax
+Compressing  AudioFilter\CLAud_HBD.ax
+Compressing  NavFilter\CLAVCHDNav.ax
+Compressing  NavFilter\CLBDRENav.ax
+Compressing  NavFilter\CLBDROMNav.ax
+Compressing  VideoFilterHVD\clcvd_hbd.ax
+Compressing  VideoFilter\clcvd_hbd.ax
+Compressing  AudioFilter\CLFusuin.ax
+Compressing  AudioFilter\CLHBMixer_HBD.ax
+Compressing  AudioFilter\InstantAud.ax
+Compressing  NavFilter\000.cat
+Compressing  NavFilter\064.cat
+Compressing  NavFilter\key\slots.dat
+Compressing  NavFilter\000.fcl
+Compressing  NavFilter\064.fcl
+Compressing  NavFilter\lib\security\java.policy
+Compressing  NavFilter\lib\security\java_permissive.policy
+Compressing  NavFilter\lib\content-types.properties
+Compressing  NavFilter\lib\font.properties
+Compressing  NavFilter\lib\security\java.security
+Compressing  NavFilter\GenRNKey.exe
+Compressing  VideoFilterHVD\acbdwrapper.dll
+Compressing  VideoFilter\acbdwrapper.dll
+Compressing  NavFilter\BDMetaParser.dll
+Compressing  CLDShowX_1.dll
+Compressing  NavFilter\cvmi.dll
+Compressing  NavFilter\D3DX9_43.dll
+Compressing  DKA.dll
+Compressing  AudioFilter\DTS_Ext.dll
+Compressing  NavFilter\fcl_dll.dll
+Compressing  NavFilter\msvcp71.dll
+Compressing  NavFilter\msvcr71.dll
+Compressing  NavFilter\xerces-c_2_7.dll
+
+Everything is Ok
